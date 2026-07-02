@@ -1,6 +1,6 @@
 {
     "name": "zerp/performance",
-    "description": "Description for performance package",
+    "description": "Employee performance review module for the Zerp ERP platform",
     "type": "library",
     "license": "MIT",
     "require": {},

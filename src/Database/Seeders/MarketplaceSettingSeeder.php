@@ -18,7 +18,7 @@ class MarketplaceSettingSeeder extends Seeder
             $files = File::files($marketplaceDir);
             foreach ($files as $file) {
                 if (in_array($file->getExtension(), ['png', 'jpg', 'jpeg', 'gif', 'webp'])) {
-                    $screenshots[] = '/packages/workdo/Performance/src/marketplace/' . $file->getFilename();
+                    $screenshots[] = '/packages/local/Performance/src/marketplace/' . $file->getFilename();
                 }
             }
         }
@@ -33,7 +33,7 @@ class MarketplaceSettingSeeder extends Seeder
                 'sections'           => [
                     'hero'        => [
                         'variant'               => 'hero1',
-                        'title'                 => 'Performance Management System for ERPGo SaaS',
+                        'title'                 => 'Performance Management System for Zerp',
                         'subtitle'              => 'Transform your organization with comprehensive employee performance tracking, goal setting, and review management.',
                         'primary_button_text'   => 'Install Performance Management',
                         'primary_button_link'   => '#install',
@@ -55,19 +55,19 @@ class MarketplaceSettingSeeder extends Seeder
                                 'title'       => 'Goal Setting & Performance Tracking',
                                 'description' => 'Comprehensive employee goal management with performance indicators and progress tracking. Set SMART goals, monitor achievements, and align individual objectives with organizational targets. Track performance metrics and provide real-time feedback to drive employee development and success.',
                                 'keyPoints'   => ['SMART goal setting framework', 'Performance indicator tracking', 'Progress monitoring dashboard', 'Achievement milestone tracking'],
-                                'screenshot'  => '/packages/workdo/Performance/src/marketplace/image1.png'
+                                'screenshot'  => '/packages/local/Performance/src/marketplace/image1.png'
                             ],
                             [
                                 'title'       => 'Review Cycles & Employee Evaluations',
                                 'description' => 'Structured performance review system with customizable review cycles and comprehensive employee evaluations. Streamline the review process with automated scheduling, standardized evaluation forms, and performance rating systems. Enable 360-degree feedback and continuous performance improvement.',
                                 'keyPoints'   => ['Automated review scheduling', 'Customizable evaluation forms', '360-degree feedback system', 'Performance rating management'],
-                                'screenshot'  => '/packages/workdo/Performance/src/marketplace/image2.png'
+                                'screenshot'  => '/packages/local/Performance/src/marketplace/image2.png'
                             ],
                             [
                                 'title'       => 'Performance Analytics & Reporting',
                                 'description' => 'Advanced performance analytics with comprehensive reporting and insights. Monitor team performance trends, identify top performers, and track goal completion rates. Generate detailed performance reports for informed decision-making and strategic planning.',
                                 'keyPoints'   => ['Performance trend analysis', 'Goal completion tracking', 'Team performance insights', 'Comprehensive reporting dashboard'],
-                                'screenshot'  => '/packages/workdo/Performance/src/marketplace/image3.png'
+                                'screenshot'  => '/packages/local/Performance/src/marketplace/image3.png'
                             ]
                         ]
                     ],
