@@ -10,8 +10,8 @@ class EmployeeReviewApiRequest extends ApiFormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|exists:users,id',
-            'reviewer_id' => 'required|exists:users,id',
+            'user_id' => 'required|exists:users,id,created_by,' . creatorId(),
+            'reviewer_id' => 'required|exists:users,id,created_by,' . creatorId(),
             'review_cycle_id' => 'required|exists:performance_review_cycles,id,created_by,' . creatorId(),
             'review_date' => 'required|date',
             'completion_date' => 'nullable|date',

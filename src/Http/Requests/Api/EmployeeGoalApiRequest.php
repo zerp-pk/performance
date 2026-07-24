@@ -10,7 +10,7 @@ class EmployeeGoalApiRequest extends ApiFormRequest
     public function rules(): array
     {
         return [
-            'employee_id' => 'required|exists:users,id',
+            'employee_id' => 'required|exists:users,id,created_by,' . creatorId(),
             'goal_type_id' => 'required|exists:performance_goal_types,id,created_by,' . creatorId(),
             'title' => 'required|string|max:255',
             'description' => 'required|string',
