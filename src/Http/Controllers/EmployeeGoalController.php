@@ -40,7 +40,11 @@ class EmployeeGoalController extends Controller
                 ->when(request('status'), fn($q) => $q->where('performance_employee_goals.status', request('status')))
                 ->when(request('sort'), function ($q) {
                     $sort = request('sort');
-                    $direction = request('direction', 'asc');
+                    // Normalised here as well: Laravel throws on a direction that is
+                    // not asc/desc, so a crafted one would 500 the join branch below.
+                    $direction = in_array(strtolower((string) request('direction')), ['asc', 'desc'], true)
+                        ? strtolower(request('direction'))
+                        : 'asc';
 
                     if ($sort === 'goal_type') {
                         return $q->join('performance_goal_types', 'performance_employee_goals.goal_type_id', '=', 'performance_goal_types.id')
@@ -48,7 +52,7 @@ class EmployeeGoalController extends Controller
                             ->select('performance_employee_goals.*');
                     }
 
-                    return $q->orderBy($sort, $direction);
+                    return $q->sortSafe($sort, $direction, 'created_at', 'desc');
                 }, fn($q) => $q->latest())
                 ->paginate(request('per_page', 10))
                 ->withQueryString();

@@ -33,7 +33,7 @@ class ReviewCycleController extends Controller
                 ->when(request('name'), fn($q) => $q->where('performance_review_cycles.name', 'like', '%' . request('name') . '%'))
                 ->when(request('frequency'), fn($q) => $q->where('performance_review_cycles.frequency', request('frequency')))
                 ->when(request('status') !== null, fn($q) => $q->where('performance_review_cycles.status', request('status')))
-                ->when(request('sort'), fn($q) => $q->orderBy(request('sort'), request('direction', 'asc')), fn($q) => $q->latest())
+                ->when(request('sort'), fn($q) => $q->sortSafe(request('sort'), request('direction'), 'created_at', 'desc'), fn($q) => $q->latest())
                 ->paginate(request('per_page', 10))
                 ->withQueryString();
 

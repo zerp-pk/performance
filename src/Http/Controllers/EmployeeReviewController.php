@@ -48,7 +48,7 @@ class EmployeeReviewController extends Controller
                 })
                 ->when(request('review_cycle_id'), fn($q) => $q->where('performance_employee_reviews.review_cycle_id', request('review_cycle_id')))
                 ->when(request('status'), fn($q) => $q->where('performance_employee_reviews.status', request('status')))
-                ->when(request('sort'), fn($q) => $q->orderBy(request('sort'), request('direction', 'asc')), fn($q) => $q->latest())
+                ->when(request('sort'), fn($q) => $q->sortSafe(request('sort'), request('direction'), 'created_at', 'desc'), fn($q) => $q->latest())
                 ->paginate(request('per_page', 10))
                 ->withQueryString();
 
